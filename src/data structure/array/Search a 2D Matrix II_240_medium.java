@@ -24,7 +24,31 @@ class Solution {
         return false;
     }
 }
-//方法二：
+/**
+ * 方法二，每一行进行二分查找
+ * O(MLOGN)
+ * O(1)
+ */
+class Solution {
+    public boolean findNumberIn2DArray(int[][] matrix, int target) {
+        for(int i = 0;i < matrix.length;i++){
+            int left = 0;
+            int right = matrix[i].length - 1;
+            while(left <= right){
+                int mid = left + (right - left) / 2;
+                if(matrix[i][mid] >target){
+                    right = mid - 1;
+                }else if(matrix[i][mid] < target){
+                    left = mid + 1;
+                }else{
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
+//方法三：
 //从右上角遍历，若元素大于当前值，则向下移动，否则向左移动。类似于二叉搜索树。妙啊！！！！！
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
