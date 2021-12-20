@@ -52,6 +52,8 @@ class Solution {
     }
 }
 //利用了剪枝
+//O(N×N!)
+//O(N×N!)
 class Solution {
     List<Integer> path = new ArrayList<>();
     boolean[] visited;
