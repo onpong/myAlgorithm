@@ -47,7 +47,16 @@ class Solution {
         String[] strs = new String[nums.length];
         for(int i = 0; i < nums.length; i++)
             strs[i] = String.valueOf(nums[i]);
-        Arrays.sort(strs, (x, y) -> (x + y).compareTo(y + x));
+        Arrays.sort(strs, new Comparator<String>(){
+            public int compare(String s1,String s2){
+                if((s1 + s2).compareTo(s2 + s1) < 0)
+                    return -1;
+                else if((s1 + s2).compareTo(s2 + s1) > 0)
+                    return 1;
+                else
+                    return 0;
+            }
+        });
         StringBuilder res = new StringBuilder();
         for(String s : strs)
             res.append(s);

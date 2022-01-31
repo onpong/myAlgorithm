@@ -1,3 +1,38 @@
+/*
+自己想法，先递归再判断本层节点，有可能造成时间浪费，下面方法先判断再递归
+ */
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public boolean isSymmetric(TreeNode root) {
+        if(root == null)
+            return true;
+        return dfs(root.left,root.right);
+        
+    }
+    public boolean dfs(TreeNode left,TreeNode right){
+        if(left == null && right == null)
+            return true;
+        if(left == null || right == null)
+            return false;
+        //返回本层的节点是否是镜像，那么只有当下面所有孩子节点是镜像且本层也是镜像那么才能返回true
+        if(dfs(left.left,right.right) && dfs(left.right,right.left)){
+            if(left.val == right.val)
+                return true;
+        }
+        return false;
+        
+        
+    }
+}
+
 /**
  * 递归解法
  * O(N)
