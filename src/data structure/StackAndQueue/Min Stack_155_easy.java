@@ -15,6 +15,8 @@ class MinStack {
     }
     
     public void pop() {
+    	//此处不能直接写min.peek() == stack.pop(),因为返回的是Integer类型，==比较的是地址，且不在-128~127范围内，没用到常量池技术，是不相等的。
+    	//不过可以min.peek().euqals(stack.pop())
         int temp = stack.pop();
         if(temp == min.peek()){
             min.pop();
